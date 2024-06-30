@@ -1,4 +1,5 @@
-FROM nvidia/cuda:11.6.0-runtime-ubuntu18.04
+#FROM nvidia/cuda:11.6.0-runtime-ubuntu18.04
+FROM nvidia/cuda:11.6.1-runtime-ubuntu20.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -17,7 +18,7 @@ RUN curl https://bootstrap.pypa.io/get-pip.py | python3.9
 
 WORKDIR /rembg
 
-RUN python3.9 -m pip install rembg[gpu]
+RUN python3.9 -m pip install rembg[cli,gpu]
 
 RUN mkdir -p ~/.u2net
 RUN wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2netp.onnx -O ~/.u2net/u2netp.onnx
